@@ -27,8 +27,8 @@ from datetime import datetime
 
 gmail_user = "YOUR_ACCOUNT@GMAIL.COM"
 gmail_pwd = "YOUR_GMAIL_PASSWORD"
-defMessage = { "message": u"משהו זז בבית %s " % str(datetime.now()), 
-              "subject":u"תזוזה אותרה"}
+defMessage = { "message": u"Default message", 
+              "subject":u"Default subject"}
 
 
 def mail(to, subject, text , attach):
