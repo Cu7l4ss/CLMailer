@@ -24,7 +24,7 @@ Since it's really the simplest form (with preinstalled libraries) no reason why 
 
 
 #### License is GPL
-Copyright (C) 2011  Shlomi Zfira
+Copyright (C) 2011  Shlomi Zfira  sendanalert@gmail.com
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
