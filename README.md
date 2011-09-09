@@ -6,8 +6,8 @@ Use any smtp server, preferably gmail(just easier).
 #### Prerequisites
 *   Python 2.7
 *   Python libraries:
-*   -   smtplib
-*   -   email
+    -   smtplib
+    -   email
 
 
 #### OS Support
