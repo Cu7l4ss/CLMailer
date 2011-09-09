@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
-"""
-Gmail Mailer!! Use you gmail account to send emails through the command line.
+"""Command Line Mailer!! Use you gmail account to send emails through the command line.
+Copyright (C) 2011  Shlomi Zfira sendanalert@gmail.com
+Licensed under GPL. Read LICENSE File for more info.
 
 Usage:
     Mailer.py [-smf] [Email Addresses]
@@ -15,7 +16,7 @@ Options:
                         use comma to separate between files 
     
 You need a gmail account to activate this.
-Just change the variables "gmail_user" and "gmail_pwd\""""
+Just change the variables "user_name" and "user_pwd\""""
     
 import smtplib
 from email.MIMEMultipart import MIMEMultipart
@@ -25,8 +26,9 @@ from email import Encoders
 import os,sys,getopt,re
 from datetime import datetime
 
-gmail_user = "YOUR_ACCOUNT@GMAIL.COM"
-gmail_pwd = "YOUR_GMAIL_PASSWORD"
+user_name = "YOUR_ACCOUNT@GMAIL.COM"
+user_pwd = "YOUR_GMAIL_PASSWORD"
+smtp_addr = "smtp.gmail.com" 
 defMessage = { "message": u"Default message", 
               "subject":u"Default subject"}
 
@@ -34,7 +36,7 @@ defMessage = { "message": u"Default message",
 def mail(to, subject, text , attach):
     msg = MIMEMultipart()
     
-    msg['From'] = gmail_user
+    msg['From'] = user_name
     msg['To'] = ', '.join(to)
     msg['Subject'] = subject
     
@@ -51,12 +53,12 @@ def mail(to, subject, text , attach):
             except IOError:
                 print "File %s wasn't found" % atc 
     try:
-        mailServer = smtplib.SMTP("smtp.gmail.com", 587)
+        mailServer = smtplib.SMTP(smtp_addr, 587)
         mailServer.ehlo()
         mailServer.starttls()
         mailServer.ehlo()
-        mailServer.login(gmail_user, gmail_pwd)
-        mailServer.sendmail(gmail_user, to, msg.as_string())
+        mailServer.login(user_name, user_pwd)
+        mailServer.sendmail(user_name, to, msg.as_string())
         mailServer.close()
     except smtplib.SMTPException as (errno, strerror):
         print "SMTP Error({0}): {1}".format(errno, strerror)

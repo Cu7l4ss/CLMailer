@@ -6,7 +6,12 @@ Use any smtp server, preferably gmail(just easier).
 #### Instructions
 1. Change the gmail_user and gmail_pwd variables to your own
 2. Change the default message and subject strings in the defMessage variable
-3. Attachments are seperated by commas
+3. Attachments are seperated with commas. Absolute paths only!
+
+#### Usage Examples
+*   Mailer.py [-smf] [Email Addresses]
+*   Mailer.py -s "Hey whats up man" -m "How's it going...." "mail@mail.com"
+*   Mailer.py -s "Hey whats up man" -m "How's it going...." -f "file1","file2" "mail@mail.com"
 
 #### Prerequisites
 *   Python 2.7
