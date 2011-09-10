@@ -13,7 +13,9 @@ Options:
     -s    --subject=    enter subject of mail
     -m    --message=    enter message of mail
     -f    --files=      absolute paths of files no directories!!
-                        use comma to separate between files 
+                        use comma to separate between files
+    -u    --userpass=   enter user password instead of the default ones
+                        "username:password"
     
 You need a gmail account to activate this.
 Just change the variables "user_name" and "user_pwd\""""
@@ -76,7 +78,7 @@ def main():
     args = sys.argv[1:]
     # parse command line options
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hm:s:f:", ["help", "message=", "subject=", "files="])
+        opts, args = getopt.getopt(sys.argv[1:], "hm:s:f:u:", ["help", "message=", "subject=", "files=", "userpass="])
     except getopt.error, msg:
         print msg
         print "for help use --help"
@@ -96,6 +98,10 @@ def main():
         if o in ("-f", "--files"):
             attachments = a.split(',')
             attachments = filter(filesFilter, attachments)
+        if o in ("-u", "--userpass"):
+            lst_auth = filter(bool, a.split(':'))
+            if lst_auth:
+                user_name, user_pwd = lst_auth
     lst = filter(mailFilter, args)
     if lst:
         try:
